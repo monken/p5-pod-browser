@@ -6,7 +6,7 @@ use Catalyst::Runtime '5.70';
 
 use parent qw/Catalyst/;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 __PACKAGE__->config( name => 'Pod::Browser' );
 
@@ -77,6 +77,8 @@ Defaults to C<1>.
 Search for modules in these directories.
 
 Defaults to C<[]>.
+
+=back
 
 =head1 STARTING THE SERVER
 

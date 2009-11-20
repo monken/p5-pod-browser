@@ -1,5 +1,9 @@
 This file documents the revision history for Perl extension Pod::Browser.
 
+0.04  2009-05-07
+      - Pod fix
+	  - Silenced warnings
+
 0.03  2009-05-04
       - Forks now by default
 

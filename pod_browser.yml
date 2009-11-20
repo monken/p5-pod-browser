@@ -1,4 +1,4 @@
-  ---
+---
 name: Pod::Browser
 
 
@@ -15,4 +15,4 @@ Controller::Root:
     - Catalyst::Manual*
     - DBIx::Class::Manual*
     - Pod::Browser* # this application  
-  dirs:        # specify more include directories
+#  dirs:        # specify more include directories
