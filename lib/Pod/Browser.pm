@@ -19,7 +19,7 @@ Pod::Browser - Pod Web Server based on Catalyst and ExtJS
 
 =head1 SYNOPSIS
 
-  # pod_browser_server.pl
+  # pod_browser
 
   visit http://localhost:3030
 
@@ -38,10 +38,6 @@ It is written using a JavaScript framework called ExtJS (L<http://www.extjs.com>
 generate beautiful and intuitive interfaces.
 
 Have a look at L<http://cpan.org/authors/id/P/PE/PERLER/pod-images/pod-encyclopedia-01.png>
-
-=head1 NOTICE
-
-This is the second release. There are probably a lot of bugs.
 
 =head1 CONFIGURATION
 
@@ -82,25 +78,10 @@ Defaults to C<[]>.
 
 =head1 STARTING THE SERVER
 
-The server backend is a Catalyst application which gives you the choice how you want to run the server.
+C<pod_browser> makes use of L<Plack::Runner>. As a result, all options from L<plackup> are
+also available to C<pod_browser>.
 
-=head2 Catalyst Development Server
-
-The easiest way might be to start the server by running
-  pod_browser_server.pl
-
-This is the Catalyst development server but should be suffient for testing or usage by a limited number
-of users.
-
-=head2 FastCGI
-
-For better performance you can chose the FastCGI server. See L<Catalyst::Manual::Cookbook/"FastCGI Deployment">
-on how to set this up.
-
-=head2 More Engines
-
-There are many more Catalyst engines avaiable. Another interesting Engine might be L<Catalyst::Engine::Apache2>.
-Check out the Catalyst::Engine namespace and see L<Catalyst::Manual::Cookbook/Deployment>.
+Run C<pod_browser --help> or L<plackup> for more information.
 
 =head1 BUGS
 

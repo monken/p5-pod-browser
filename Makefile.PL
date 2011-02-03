@@ -11,12 +11,11 @@ requires 'Catalyst::Runtime' => '5.7014';
 requires 'Catalyst::Plugin::ConfigLoader';
 requires 'Catalyst::Plugin::Static::Simple';
 requires 'Catalyst::Action::RenderView';
-requires 'Catalyst::Controller::POD' => "0.02005";
+requires 'Catalyst::Controller::POD' => "1.0.0";
 requires 'parent';
-requires 'YAML::Syck'; # This should reflect the config file format you've chosen
-                 # See Catalyst::Plugin::ConfigLoader for supported formats
+requires 'YAML::Syck';
 catalyst;
 
-install_script glob('script/*.pl');
+install_script glob('script/*');
 auto_install;
 WriteAll;
