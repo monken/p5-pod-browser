@@ -1,8 +1,30 @@
 #!/usr/bin/env perl
+# PODNAME: pod_browser
 use strict;
 use Pod::Browser;
 use Plack::Runner;
-Pod::Browser->setup_engine('PSGI');
+use Plack::Middleware::Conditional;
+use Plack::Middleware::ReverseProxy;
+
+my $app;
+if($Catalyst::VERSION < 5.89) {
+    $app = sub { Pod::Browser->run(@_) };
+    Pod::Browser->setup_engine('PSGI');
+} else {
+    $app = Pod::Browser->raw_psgi_app;
+}
+
+$app = Plack::Middleware::Conditional->wrap(
+    $app,
+    builder   => sub { Plack::Middleware::ReverseProxy->wrap($_[0]) },
+    condition => sub {
+        my ($env) = @_;
+        return if Pod::Browser->config->{ignore_frontend_proxy};
+        return $env->{REMOTE_ADDR} eq '127.0.0.1'
+            || Pod::Browser->config->{using_frontend_proxy};
+    },
+);
+
 my $runner = Plack::Runner->new;
 $runner->parse_options( qw(--env nodevel --port 3030), @ARGV );
 $runner->set_options(
@@ -13,14 +35,10 @@ $runner->set_options(
         print STDERR
 "POD::Browser: Accepting connections at $proto://$host:$args->{port}/\n";
     } );
-$runner->run(sub { Pod::Browser->run(@_) });
+$runner->run($app);
 
 
 __END__
-
-=head1 NAME
-
-pod_browser - Run PSGI application with Plack servers
 
 =head1 SYNOPSIS
 
@@ -82,7 +100,7 @@ Specify perl library include path, like C<perl>'s -I option.
 =item --access-log
 
 Specify the pathname of a file where the access log should be written.
-By default, in the development environment access logs will go to STDERR.
+In the development (i.e. C<< --env devel >>) environment access logs will go to STDERR.
 
 =back
 

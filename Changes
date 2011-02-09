@@ -1,8 +1,12 @@
 This file documents the revision history for Perl extension Pod::Browser.
 
+0.9.0 2011
+      - Catalyst 5.9 ready
+      - switched to Dist::Zilla
+
 0.04  2009-05-07
       - Pod fix
-	  - Silenced warnings
+	    - Silenced warnings
 
 0.03  2009-05-04
       - Forks now by default

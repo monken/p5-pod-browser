@@ -1,21 +1,12 @@
 package Pod::Browser;
 use strict;
 use warnings;
-
+# ABSTRACT: Pod Web Server based on Catalyst and ExtJS
 use Catalyst::Runtime '5.70';
-
-use parent qw/Catalyst/;
-
-our $VERSION = '0.04';
+use base qw/Catalyst/;
 
 __PACKAGE__->config( name => 'Pod::Browser' );
-
 __PACKAGE__->setup(qw/ ConfigLoader Static::Simple/);
-
-
-=head1 NAME
-
-Pod::Browser - Pod Web Server based on Catalyst and ExtJS
 
 =head1 SYNOPSIS
 
@@ -35,9 +26,13 @@ not installed this controller fetches the source code from CPAN and creates the 
 There is also a TOC which is always visible and scrolls the current POD to the selected section.
 
 It is written using a JavaScript framework called ExtJS (L<http://www.extjs.com>) which
-generate beautiful and intuitive interfaces.
+generates beautiful and rich user interfaces.
 
-Have a look at L<http://cpan.org/authors/id/P/PE/PERLER/pod-images/pod-encyclopedia-01.png>
+=begin html
+
+<p><center><img src="http://cpan.org/authors/id/P/PE/PERLER/pod-images/pod-encyclopedia-01.png" width="882" height="462" /></center></p>
+
+=end html
 
 =head1 CONFIGURATION
 
@@ -81,14 +76,7 @@ Defaults to C<[]>.
 C<pod_browser> makes use of L<Plack::Runner>. As a result, all options from L<plackup> are
 also available to C<pod_browser>.
 
-Run C<pod_browser --help> or L<plackup> for more information.
-
-=head1 BUGS
-
-=head2 Jump to sections
-
-There are some names of sections in some Pods which include special characters. There are still some problems with them.
-It would be helpful if you report these Pods so I can work around these cases.
+Run C<pod_browser --help> or see L<plackup> for more information.
 
 =head1 INTEGRATION IN CATALYST
 
@@ -104,14 +92,3 @@ ExtJS (L<http://www.extjs.com>) is used for the user interface.
 Other Pod Web Servers:
 
 L<Pod::Server>, L<Pod::Webserver>, L<Pod::POM::Web>
-
-=head1 AUTHOR
-
-Moritz Onken
-
-=head1 LICENSE
-
-This library is free software, you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-=cut
