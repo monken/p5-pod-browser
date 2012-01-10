@@ -11,7 +11,7 @@ if($Catalyst::VERSION < 5.89) {
     $app = sub { Pod::Browser->run(@_) };
     Pod::Browser->setup_engine('PSGI');
 } else {
-    $app = Pod::Browser->raw_psgi_app;
+    $app = Pod::Browser->psgi_app;
 }
 
 $app = Plack::Middleware::Conditional->wrap(

@@ -8,6 +8,10 @@ use base qw/Catalyst/;
 __PACKAGE__->config( name => 'Pod::Browser' );
 __PACKAGE__->setup(qw/ ConfigLoader Static::Simple/);
 
+sub { __PACKAGE__->run( @_) }
+
+__END__
+
 =head1 SYNOPSIS
 
   # pod_browser
