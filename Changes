@@ -1,5 +1,8 @@
 This file documents the revision history for Perl extension Pod::Browser.
 
+1.0.0 2012-01-10
+      - reversioned due to decreasing version number
+
 0.9.1 2012-01-10
       - work with Catalyst 5.9
 
