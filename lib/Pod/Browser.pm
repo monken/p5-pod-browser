@@ -2,7 +2,7 @@ package Pod::Browser;
 use strict;
 use warnings;
 # ABSTRACT: Pod Web Server based on Catalyst and ExtJS
-use Catalyst::Runtime '5.70';
+use Catalyst::Runtime '5.90012';
 use base qw/Catalyst/;
 
 __PACKAGE__->config( name => 'Pod::Browser' );
